@@ -1,0 +1,45 @@
+// ---------- Colors ----------
+$primary: #4c6796 !default;
+$secondary: #668ba2 !default;
+$secondary-light: #f3f6f8 !default;
+$danger: #f45c5e !default;
+$danger-light: rgba($danger, 35%) !default;
+$success: #66a274 !default;
+$success-light: rgba($success, 35%) !default;
+$black: #132533 !default;
+$black-light: rgba(#132533, 35%) !default;
+$white: #ffffff !default;
+
+// ---------- Fonts ----------
+$font-khula: 'Khula', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+	'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+	sans-serif !default;
+$font-inconsolata: 'Inconsolata', source-code-pro, Menlo, Monaco, Consolas,
+	'Courier New', monospace !default;
+
+// ---------- Font Sizes ----------
+$font-size-root: 1rem !default;
+$font-12: $font-size-root * 0.75 !default;
+$font-14: $font-size-root * 0.875 !default;
+$font-16: $font-size-root * 1 !default;
+$font-18: $font-size-root * 1.125 !default;
+$font-20: $font-size-root * 1.25 !default;
+$font-24: $font-size-root * 1.5 !default;
+$font-32: $font-size-root * 2 !default;
+$font-48: $font-size-root * 3 !default;
+$font-50: $font-size-root * 3.125 !default;
+
+// ---------- Font Weights ----------
+$font-normal: 400 !default;
+$font-semi-bold: 600 !default;
+$font-bold: 700 !default;
+$font-extra-bold: 800 !default;
+
+// ---------- Line Heights ----------
+$lh-sm: 1.25 !default;
+$lh: 1.5 !default;
+$lh-lg: 2 !default;
+
+// ---------- Paddings ----------
+$pad-lg: 50px;
+$pad-xl: 88px;
