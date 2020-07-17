@@ -1,0 +1,53 @@
+.navbar {
+	align-items: center;
+	display: flex;
+	padding: $pad-sm $pad-xl;
+	width: 100%;
+
+	&__logo {
+		margin-right: auto;
+		width: 160px;
+
+		svg {
+			display: block;
+		}
+	}
+
+	&__creator {
+		align-items: center;
+		display: inline-flex;
+		width: 185px;
+
+		&-info {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			margin-right: 12px;
+
+			&-text,
+			&-link {
+				font-size: $font-12;
+				height: 14px;
+			}
+
+			&-link {
+				font-weight: $font-semi-bold;
+			}
+
+			&-name {
+				font-size: $font-16;
+				font-weight: $font-bold;
+				height: 20px;
+				margin: 2px 0;
+			}
+		}
+
+		&-avatar {
+			img {
+				height: 62px;
+				width: 62px;
+			}
+		}
+	}
+}
