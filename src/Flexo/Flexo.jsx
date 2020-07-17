@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { Navbar } from './components';
+import { Navbar, FlexContainer } from './components';
 
 class Flexo extends Component {
 	state = {};
 	render() {
-		return <Navbar />;
+		return (
+			<>
+				<Navbar />
+				<FlexContainer />
+			</>
+		);
 	}
 }
 
