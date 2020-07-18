@@ -1,0 +1,27 @@
+.axis {
+	pointer-events: none;
+	position: absolute;
+	z-index: 100;
+
+	&--horizontal {
+		height: 4px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 100%;
+	}
+
+	&--vertical {
+		height: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 4px;
+	}
+
+	&--main {
+		background-color: $danger;
+	}
+
+	&--cross {
+		background-color: $success;
+	}
+}
