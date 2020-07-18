@@ -1,0 +1,74 @@
+$indicator-width: 25px;
+$rail-height: $indicator-width / 2;
+$rail-width: ($indicator-width - 3) * 2;
+
+.toggle {
+	align-items: center;
+	display: inline-flex;
+	margin-right: 60px;
+
+	input[type='checkbox'] {
+		visibility: hidden;
+	}
+
+	&__rail {
+		background-color: $gray-light;
+		border-radius: $border-radius;
+		cursor: pointer;
+		height: $rail-height;
+		position: relative;
+		width: $rail-width;
+
+		&-indicator {
+			background-color: $gray;
+			border-radius: 50%;
+			cursor: pointer;
+			display: block;
+			height: $indicator-width;
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: left 150ms $timing-func-1,
+				background-color 150ms $timing-func-1;
+			width: $indicator-width;
+		}
+
+		&--active {
+			.toggle__rail-indicator {
+				left: calc(100% - #{$indicator-width});
+			}
+
+			&.toggle__rail--danger {
+				background-color: $danger-light;
+
+				.toggle__rail-indicator {
+					background-color: $danger;
+				}
+			}
+
+			&.toggle__rail--success {
+				background-color: $success-light;
+
+				.toggle__rail-indicator {
+					background-color: $success;
+				}
+			}
+
+			&.toggle__rail--black {
+				background-color: $black-light;
+
+				.toggle__rail-indicator {
+					background-color: $black;
+				}
+			}
+		}
+	}
+
+	&__label {
+		font-size: $font-20;
+		font-weight: $font-bold;
+		height: calc(#{$font-20} + 6px);
+		margin-left: 10px;
+	}
+}
