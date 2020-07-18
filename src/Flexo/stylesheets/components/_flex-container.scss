@@ -2,5 +2,6 @@
 	background-color: $secondary-light;
 	height: calc(100vh - 200px);
 	overflow: auto;
+	padding: $pad-lg $pad-xl;
 	position: relative;
 }
