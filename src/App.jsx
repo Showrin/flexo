@@ -1,10 +1,13 @@
 import React from 'react';
+import { ContextProvider } from './contextSetup';
 import Flexo from './Flexo';
 
 function App() {
 	return (
 		<div className="App">
-			<Flexo />
+			<ContextProvider>
+				<Flexo />
+			</ContextProvider>
 		</div>
 	);
 }
