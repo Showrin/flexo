@@ -3,11 +3,13 @@ $primary: #4c6796 !default;
 $secondary: #668ba2 !default;
 $secondary-light: #f3f6f8 !default;
 $danger: #f45c5e !default;
-$danger-light: rgba($danger, 35%) !default;
+$danger-light: rgba($danger, 0.35) !default;
 $success: #66a274 !default;
-$success-light: rgba($success, 35%) !default;
+$success-light: rgba($success, 0.35) !default;
 $black: #132533 !default;
-$black-light: rgba(#132533, 35%) !default;
+$black-light: rgba($black, 0.35) !default;
+$gray: #c3c3c3;
+$gray-light: rgba(#c3c3c3, 0.35) !default;
 $white: #ffffff !default;
 
 // ---------- Fonts ----------
@@ -44,3 +46,9 @@ $lh-lg: 2 !default;
 $pad-sm: 18px;
 $pad-lg: 50px;
 $pad-xl: 88px;
+
+// ---------- Borders ----------
+$border-radius: 15px;
+
+// ---------- Timing Functions ----------
+$timing-func-1: cubic-bezier(0.4, 0, 0.2, 1) 0ms;
