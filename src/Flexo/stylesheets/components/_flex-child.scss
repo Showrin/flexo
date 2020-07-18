@@ -1,0 +1,42 @@
+.flex-child {
+	align-items: center;
+	background-color: $primary;
+	border-radius: $border-radius;
+	cursor: pointer;
+	display: inline-flex;
+	justify-content: center;
+	margin: 1px;
+	min-height: 110px;
+	min-width: 235px;
+	position: relative;
+	transition: background-color 150ms $timing-func-1,
+		transform 150ms $timing-func-1;
+
+	&:hover,
+	&--selected {
+		background-color: $success;
+	}
+
+	&:active {
+		transform: scale(0.9);
+	}
+
+	&__overlay {
+		background-color: $white;
+		border-radius: inherit;
+		bottom: 15px;
+		display: block;
+		left: 15px;
+		opacity: 0.07;
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
+
+	&__id {
+		color: $white;
+		font-size: $font-50;
+		font-weight: $font-extra-bold;
+		height: calc(#{$font-50} + 12px);
+	}
+}
