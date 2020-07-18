@@ -33,13 +33,13 @@ const Toggle = (props) => {
 Toggle.defaultProps = {
 	label: null,
 	onClick: () => {},
-	toggleColor: 'dark',
+	toggleColor: 'black',
 };
 
 Toggle.propTypes = {
 	label: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
 	onClick: PropTypes.func,
-	toggleColor: PropTypes.oneOf(['dark', 'danger', 'success']),
+	toggleColor: PropTypes.oneOf(['black', 'danger', 'success']),
 };
 
 export default Toggle;
