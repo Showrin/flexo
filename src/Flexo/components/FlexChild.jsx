@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { ReactComponent as Overlay } from '../assets/childOverlay.svg';
 
 const FlexChild = (props) => {
 	const { id, onClick, isSelected } = props;
@@ -13,7 +14,7 @@ const FlexChild = (props) => {
 			onClick={() => onClick(id)}
 		>
 			<div className="flex-child__id">{id}</div>
-			<div className="flex-child__overlay" />
+			<Overlay className="flex-child__overlay" />
 		</div>
 	);
 };
