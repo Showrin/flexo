@@ -1,0 +1,52 @@
+.sidebar {
+	position: absolute;
+	height: 60%;
+	width: 100%;
+	background-color: rgba($black, 0.95);
+	z-index: 1000;
+	bottom: -100%;
+	left: 0;
+	border-top-left-radius: $border-radius;
+	border-top-right-radius: $border-radius;
+	color: $white;
+	transition: bottom 300ms $timing-func-1;
+
+	&__header {
+		height: 20%;
+		display: flex;
+		align-items: center;
+		padding: 0 $pad-xl;
+
+		&-title {
+			font-size: $font-48;
+			font-weight: $font-bold;
+			height: calc(#{$font-48} + 18px);
+		}
+
+		&-close {
+			display: block;
+			height: 1em;
+			width: 1em;
+			stroke-width: 0;
+			font-size: 30px;
+			margin-left: auto;
+			cursor: pointer;
+			transition: transform 150ms $timing-func-1;
+
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+	}
+
+	&__body {
+		height: 80%;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 0 $pad-xl;
+	}
+
+	&--open {
+		bottom: 0;
+	}
+}
