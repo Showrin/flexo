@@ -12,10 +12,15 @@ const FlexContainer = (props) => {
 					showCrossAxis,
 					addPadding,
 				} = context.appState;
+				const { openSidebar } = context;
 				const padding = addPadding ? '50px 88px' : '0';
 
 				return (
-					<div className="flex-container" style={{ padding }}>
+					<div
+						className="flex-container"
+						style={{ padding }}
+						onClick={openSidebar}
+					>
 						{showMainAxis && (
 							<Axis direction="horizontal" type="main" />
 						)}
