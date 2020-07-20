@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Axis from './Axis';
 import Consumer from '../../contextSetup';
 import FlexChild from './FlexChild';
@@ -11,15 +12,24 @@ const FlexContainer = (props) => {
 					showMainAxis,
 					showCrossAxis,
 					addPadding,
+					selectedElement,
 				} = context.appState;
-				const { openSidebar } = context;
+				const { openSidebar, handleSelectedElement } = context;
 				const padding = addPadding ? '50px 88px' : '0';
+
+				const onClickHandler = () => {
+					handleSelectedElement('container', undefined);
+					openSidebar();
+				};
 
 				return (
 					<div
-						className="flex-container"
+						className={classNames('flex-container', {
+							'flex-container--selected':
+								selectedElement.type === 'container',
+						})}
 						style={{ padding }}
-						onClick={openSidebar}
+						onClick={onClickHandler}
 					>
 						{showMainAxis && (
 							<Axis direction="horizontal" type="main" />
@@ -30,7 +40,7 @@ const FlexContainer = (props) => {
 						<FlexChild id={1} />
 						<FlexChild id={2} />
 						<FlexChild id={3} />
-						<FlexChild id={4} isSelected={true} />
+						<FlexChild id={4} />
 						<FlexChild id={5} />
 						<FlexChild id={6} />
 						<FlexChild id={7} />
