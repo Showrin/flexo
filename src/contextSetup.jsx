@@ -6,6 +6,7 @@ const ContextProvider = (props) => {
 		showMainAxis: true,
 		showCrossAxis: true,
 		addPadding: true,
+		showSidebar: true,
 	});
 
 	const handleMainAxisToggle = () =>
@@ -26,6 +27,18 @@ const ContextProvider = (props) => {
 			addPadding: !preState.addPadding,
 		}));
 
+	const openSidebar = () =>
+		setAppState((preState) => ({
+			...preState,
+			showSidebar: true,
+		}));
+
+	const closeSidebar = () =>
+		setAppState((preState) => ({
+			...preState,
+			showSidebar: false,
+		}));
+
 	return (
 		<Provider
 			value={{
@@ -33,6 +46,8 @@ const ContextProvider = (props) => {
 				handleMainAxisToggle,
 				handleCrossAxisToggle,
 				handlePaddingToggle,
+				openSidebar,
+				closeSidebar,
 			}}
 		>
 			{props.children}
