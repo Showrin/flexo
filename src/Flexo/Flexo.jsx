@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, FlexContainer, BottomBar } from './components';
+import { Navbar, FlexContainer, BottomBar, Sidebar } from './components';
 
 class Flexo extends Component {
 	state = {};
@@ -9,6 +9,7 @@ class Flexo extends Component {
 				<Navbar />
 				<FlexContainer />
 				<BottomBar />
+				<Sidebar />
 			</>
 		);
 	}
