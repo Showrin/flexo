@@ -6,7 +6,11 @@ const ContextProvider = (props) => {
 		showMainAxis: true,
 		showCrossAxis: true,
 		addPadding: true,
-		showSidebar: true,
+		showSidebar: false,
+		selectedElement: {
+			type: '',
+			id: undefined,
+		},
 	});
 
 	const handleMainAxisToggle = () =>
@@ -34,9 +38,18 @@ const ContextProvider = (props) => {
 		}));
 
 	const closeSidebar = () =>
+		setAppState(
+			(preState) => ({
+				...preState,
+				showSidebar: false,
+			}),
+			handleSelectedElement('', undefined)
+		);
+
+	const handleSelectedElement = (elementType, id) =>
 		setAppState((preState) => ({
 			...preState,
-			showSidebar: false,
+			selectedElement: { type: elementType, id },
 		}));
 
 	return (
@@ -48,6 +61,7 @@ const ContextProvider = (props) => {
 				handlePaddingToggle,
 				openSidebar,
 				closeSidebar,
+				handleSelectedElement,
 			}}
 		>
 			{props.children}
