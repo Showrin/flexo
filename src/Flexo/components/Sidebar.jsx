@@ -7,17 +7,22 @@ const Sidebar = (props) => {
 	return (
 		<Consumer>
 			{(context) => {
-				const { appState, closeSidebar } = context;
+				const { selectedElement, showSidebar } = context.appState;
+				const { closeSidebar } = context;
 
 				return (
 					<div
 						className={classNames('sidebar', {
-							'sidebar--open': appState.showSidebar,
+							'sidebar--open': showSidebar,
 						})}
 					>
 						<div className="sidebar__header">
 							<div className="sidebar__header-title">
-								Flex Container Settings
+								{`Flex ${selectedElement.type}${
+									selectedElement.id
+										? `-{${selectedElement.id}}`
+										: ''
+								} Settings`}
 							</div>
 							<CloseIcon
 								className="sidebar__header-close"
