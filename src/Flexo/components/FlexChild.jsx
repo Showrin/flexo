@@ -5,23 +5,27 @@ import Consumer from '../../contextSetup';
 import { ReactComponent as Overlay } from '../assets/childOverlay.svg';
 
 const FlexChild = (props) => {
-	const { id, onClick, isSelected } = props;
+	const { id } = props;
 
 	return (
 		<Consumer>
 			{(context) => {
-				const { openSidebar } = context;
+				const { selectedElement } = context.appState;
+				const { openSidebar, handleSelectedElement } = context;
+				const onClickHandler = (e) => {
+					e.stopPropagation();
+					handleSelectedElement('child', id);
+					openSidebar();
+				};
 
 				return (
 					<div
 						className={classNames('flex-child', {
-							'flex-child--selected': isSelected,
+							'flex-child--selected':
+								selectedElement.type === 'child' &&
+								selectedElement.id === id,
 						})}
-						onClick={(e) => {
-							e.stopPropagation();
-							openSidebar();
-							return onClick(id);
-						}}
+						onClick={onClickHandler}
 					>
 						<div className="flex-child__id">{id}</div>
 						<Overlay className="flex-child__overlay" />
