@@ -44,7 +44,13 @@
 		height: 80%;
 		overflow-x: hidden;
 		overflow-y: auto;
-		padding: 0 $pad-xl;
+		padding: 0 $pad-lg;
+		display: flex;
+		flex-wrap: wrap;
+
+		&-col {
+			width: 50%;
+		}
 	}
 
 	&--open {

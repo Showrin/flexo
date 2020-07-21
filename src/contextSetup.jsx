@@ -11,6 +11,15 @@ const ContextProvider = (props) => {
 			type: '',
 			id: undefined,
 		},
+		containerStyles: {
+			display: 'flex',
+			children: 1,
+			'flex-direction': 'row',
+			'flex-wrap': 'nowrap',
+			'justify-content': 'flex-start',
+			'align-items': 'stretch',
+			'align-content': 'stretch',
+		},
 	});
 
 	const handleMainAxisToggle = () =>

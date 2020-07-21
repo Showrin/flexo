@@ -13,6 +13,7 @@ const FlexContainer = (props) => {
 					showCrossAxis,
 					addPadding,
 					selectedElement,
+					containerStyles,
 				} = context.appState;
 				const { openSidebar, handleSelectedElement } = context;
 				const padding = addPadding ? '50px 88px' : '0';
@@ -28,7 +29,7 @@ const FlexContainer = (props) => {
 							'flex-container--selected':
 								selectedElement.type === 'container',
 						})}
-						style={{ padding }}
+						style={{ padding, ...containerStyles }}
 						onClick={onClickHandler}
 					>
 						{showMainAxis && (

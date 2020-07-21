@@ -2,12 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import Consumer from '../../contextSetup';
 import { ReactComponent as CloseIcon } from '../assets/close.svg';
+import styledOptions from './styleOptions';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
 	return (
 		<Consumer>
 			{(context) => {
-				const { selectedElement, showSidebar } = context.appState;
+				const {
+					selectedElement,
+					showSidebar,
+					containerStyles,
+				} = context.appState;
 				const { closeSidebar } = context;
 
 				return (
@@ -29,7 +34,20 @@ const Sidebar = (props) => {
 								onClick={closeSidebar}
 							/>
 						</div>
-						<div className="sidebar__body"></div>
+						<div className="sidebar__body">
+							{selectedElement.type === 'container' &&
+								Object.keys(containerStyles).map((style) => (
+									<div className="sidebar__body-col">
+										<code className="sidebar__body-col-property">{`${style} >  ${containerStyles[style]}`}</code>
+										<div className="sidebar__body-col-options">
+											{styledOptions[style] &&
+												styledOptions[style].map(
+													(option) => option
+												)}
+										</div>
+									</div>
+								))}
+						</div>
 					</div>
 				);
 			}}
