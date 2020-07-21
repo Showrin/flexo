@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Consumer from '../../contextSetup';
 import { ReactComponent as CloseIcon } from '../assets/close.svg';
 import styledOptions from './styleOptions';
+import Button from './Button';
 
 const Sidebar = () => {
 	return (
@@ -42,9 +43,29 @@ const Sidebar = () => {
 										<code className="sidebar__body-col-property">{`${style} >  ${containerStyles[style]}`}</code>
 										<div className="sidebar__body-col-options">
 											{styledOptions[style] &&
-												styledOptions[style].map(
-													(option) => option
-												)}
+												styledOptions[
+													style
+												].map((option) => (
+													<Button
+														label={option}
+														active={
+															option ===
+															containerStyles[
+																style
+															]
+														}
+														isIncrement={
+															option
+																.split('')
+																.shift() === '+'
+														}
+														isDecrement={
+															option
+																.split('')
+																.shift() === '-'
+														}
+													/>
+												))}
 										</div>
 									</div>
 								))}
@@ -59,9 +80,30 @@ const Sidebar = () => {
 										}`}</code>
 										<div className="sidebar__body-col-options">
 											{styledOptions[style] &&
-												styledOptions[style].map(
-													(option) => option
-												)}
+												styledOptions[
+													style
+												].map((option) => (
+													<Button
+														label={option}
+														active={
+															option ===
+															children[
+																selectedElement.id -
+																	1
+															].childStyles[style]
+														}
+														isIncrement={
+															option
+																.split('')
+																.shift() === '+'
+														}
+														isDecrement={
+															option
+																.split('')
+																.shift() === '-'
+														}
+													/>
+												))}
 										</div>
 									</div>
 								))}

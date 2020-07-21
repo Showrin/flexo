@@ -45,19 +45,6 @@ const FlexContainer = (props) => {
 								<FlexChild id={id} childStyles={childStyles} />
 							);
 						})}
-
-						{/* <FlexChild id={2} />
-						<FlexChild id={3} />
-						<FlexChild id={4} />
-						<FlexChild id={5} />
-						<FlexChild id={6} />
-						<FlexChild id={7} />
-						<FlexChild id={8} />
-						<FlexChild id={9} />
-						<FlexChild id={10} />
-						<FlexChild id={11} />
-						<FlexChild id={12} />
-						<FlexChild id={13} /> */}
 					</div>
 				);
 			}}
