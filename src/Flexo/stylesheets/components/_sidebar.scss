@@ -50,6 +50,16 @@
 
 		&-col {
 			width: 50%;
+			margin-bottom: 20px;
+
+			&-property {
+				margin-bottom: 10px;
+				display: inline-block;
+			}
+
+			.button {
+				margin: 0 20px 20px 0;
+			}
 		}
 	}
 

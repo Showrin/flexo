@@ -1,0 +1,36 @@
+.button {
+	padding: 2px 20px;
+	border-radius: 50px;
+	background-color: $secondary;
+	border: none;
+	box-shadow: $shadow-1;
+	transition: background-color 150ms $timing-func-1,
+		transform 150ms $timing-func-1;
+
+	&__label {
+		display: inline-block;
+		font-size: 16px;
+		font-family: $font-khula;
+		font-weight: $font-bold;
+		color: $white;
+		height: calc(#{$font-16} + 6px);
+	}
+
+	&:hover,
+	&--active,
+	&--increment {
+		background-color: $success;
+	}
+
+	&--decrement {
+		background-color: $danger;
+
+		&:hover {
+			background-color: $danger;
+		}
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+}
