@@ -12,6 +12,7 @@ const Sidebar = () => {
 					selectedElement,
 					showSidebar,
 					containerStyles,
+					children,
 				} = context.appState;
 				const { closeSidebar } = context;
 
@@ -39,6 +40,23 @@ const Sidebar = () => {
 								Object.keys(containerStyles).map((style) => (
 									<div className="sidebar__body-col">
 										<code className="sidebar__body-col-property">{`${style} >  ${containerStyles[style]}`}</code>
+										<div className="sidebar__body-col-options">
+											{styledOptions[style] &&
+												styledOptions[style].map(
+													(option) => option
+												)}
+										</div>
+									</div>
+								))}
+							{selectedElement.type === 'child' &&
+								Object.keys(
+									children[selectedElement.id - 1].childStyles
+								).map((style) => (
+									<div className="sidebar__body-col">
+										<code className="sidebar__body-col-property">{`${style} >  ${
+											children[selectedElement.id - 1]
+												.childStyles[style]
+										}`}</code>
 										<div className="sidebar__body-col-options">
 											{styledOptions[style] &&
 												styledOptions[style].map(

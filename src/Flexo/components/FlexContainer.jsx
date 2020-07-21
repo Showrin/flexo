@@ -14,6 +14,7 @@ const FlexContainer = (props) => {
 					addPadding,
 					selectedElement,
 					containerStyles,
+					children,
 				} = context.appState;
 				const { openSidebar, handleSelectedElement } = context;
 				const padding = addPadding ? '50px 88px' : '0';
@@ -38,8 +39,14 @@ const FlexContainer = (props) => {
 						{showCrossAxis && (
 							<Axis direction="vertical" type="cross" />
 						)}
-						<FlexChild id={1} />
-						<FlexChild id={2} />
+						{children.map((child) => {
+							const { id, childStyles } = child;
+							return (
+								<FlexChild id={id} childStyles={childStyles} />
+							);
+						})}
+
+						{/* <FlexChild id={2} />
 						<FlexChild id={3} />
 						<FlexChild id={4} />
 						<FlexChild id={5} />
@@ -50,7 +57,7 @@ const FlexContainer = (props) => {
 						<FlexChild id={10} />
 						<FlexChild id={11} />
 						<FlexChild id={12} />
-						<FlexChild id={13} />
+						<FlexChild id={13} /> */}
 					</div>
 				);
 			}}

@@ -20,6 +20,18 @@ const ContextProvider = (props) => {
 			'align-items': 'stretch',
 			'align-content': 'stretch',
 		},
+		children: [
+			{
+				id: 1,
+				childStyles: {
+					order: '0',
+					'flex-basis': 'auto',
+					'flex-grow': '0',
+					'flex-shrink': '1',
+					'align-self': 'auto',
+				},
+			},
+		],
 	});
 
 	const handleMainAxisToggle = () =>

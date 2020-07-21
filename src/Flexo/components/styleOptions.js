@@ -21,4 +21,16 @@ export default {
 		'space-around',
 		'space-evenly',
 	],
+	order: ['+1', '+3', '+5', '+7', '-1', '-3', '-5', '-7'],
+	'flex-basis': ['auto / 0%', '20%', '40%', '60%', '80%', '100%'],
+	'flex-grow': ['+1', '+3', '+5', '+7'],
+	'flex-shrink': ['+1', '+3', '+5', '+7'],
+	'align-self': [
+		'auto',
+		'stretch',
+		'flex-start',
+		'flex-end',
+		'center',
+		'baseline',
+	],
 };
