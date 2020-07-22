@@ -2,10 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import Consumer from '../../contextSetup';
 import { ReactComponent as CloseIcon } from '../assets/close.svg';
+import { ReactComponent as BottomRotate } from '../assets/bottomRotate.svg';
+import { ReactComponent as RightRotate } from '../assets/rightRotate.svg';
 import styledOptions from './styleOptions';
 import Button from './Button';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
 	const convertPropertyNameFromJsxToCss = (propertyName) => {
 		return propertyName
 			.split('')
@@ -23,16 +25,25 @@ const Sidebar = () => {
 				const {
 					selectedElement,
 					showSidebar,
+					sidebarPosition,
 					containerStyles,
 					children,
 				} = context.appState;
-				const { closeSidebar, handleCssPropertyChange } = context;
+				const {
+					closeSidebar,
+					handleCssPropertyChange,
+					changeSidebarPosition,
+				} = context;
 
 				return (
 					<div
-						className={classNames('sidebar', {
-							'sidebar--open': showSidebar,
-						})}
+						className={classNames(
+							'sidebar',
+							`sidebar--${sidebarPosition}`,
+							{
+								'sidebar--open': showSidebar,
+							}
+						)}
 					>
 						<div className="sidebar__header">
 							<div className="sidebar__header-title">
@@ -40,10 +51,25 @@ const Sidebar = () => {
 									selectedElement.id
 										? `-{${selectedElement.id}}`
 										: ''
-								} Settings`}
+								}`}
 							</div>
+							{sidebarPosition === 'right' ? (
+								<BottomRotate
+									className="sidebar__header-icon sidebar__header-icon--rotate"
+									onClick={() => {
+										changeSidebarPosition('bottom');
+									}}
+								/>
+							) : (
+								<RightRotate
+									className="sidebar__header-icon sidebar__header-icon--rotate"
+									onClick={() => {
+										changeSidebarPosition('right');
+									}}
+								/>
+							)}
 							<CloseIcon
-								className="sidebar__header-close"
+								className="sidebar__header-icon sidebar__header-icon--close"
 								onClick={closeSidebar}
 							/>
 						</div>
