@@ -6,6 +6,17 @@ import styledOptions from './styleOptions';
 import Button from './Button';
 
 const Sidebar = () => {
+	const convertPropertyNameFromJsxToCss = (propertyName) => {
+		return propertyName
+			.split('')
+			.map((character) =>
+				character >= 'A' && character <= 'Z'
+					? `-${character.toLowerCase()}`
+					: character
+			)
+			.join('');
+	};
+
 	return (
 		<Consumer>
 			{(context) => {
@@ -40,7 +51,9 @@ const Sidebar = () => {
 							{selectedElement.type === 'container' &&
 								Object.keys(containerStyles).map((style) => (
 									<div className="sidebar__body-col">
-										<code className="sidebar__body-col-property">{`${style} >  ${containerStyles[style]}`}</code>
+										<code className="sidebar__body-col-property">{`${convertPropertyNameFromJsxToCss(
+											style
+										)} >  ${containerStyles[style]}`}</code>
 										<div className="sidebar__body-col-options">
 											{styledOptions[style] &&
 												styledOptions[
@@ -74,7 +87,9 @@ const Sidebar = () => {
 									children[selectedElement.id - 1].childStyles
 								).map((style) => (
 									<div className="sidebar__body-col">
-										<code className="sidebar__body-col-property">{`${style} >  ${
+										<code className="sidebar__body-col-property">{`${convertPropertyNameFromJsxToCss(
+											style
+										)} >  ${
 											children[selectedElement.id - 1]
 												.childStyles[style]
 										}`}</code>
