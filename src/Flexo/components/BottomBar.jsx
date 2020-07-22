@@ -11,10 +11,17 @@ const BottomBar = () => {
 					handleCrossAxisToggle,
 					handlePaddingToggle,
 					closeSidebar,
+					handleSelectedElement,
 				} = context;
 
 				return (
-					<div className="bottom-bar" onClick={closeSidebar}>
+					<div
+						className="bottom-bar"
+						onClick={() => {
+							handleSelectedElement('', undefined);
+							return closeSidebar();
+						}}
+					>
 						<Toggle
 							label="Main Axis"
 							toggleColor="danger"
