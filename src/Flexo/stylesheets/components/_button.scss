@@ -1,18 +1,18 @@
 .button {
-	padding: 2px 20px;
-	border-radius: 50px;
 	background-color: $secondary;
+	border-radius: 50px;
 	border: none;
 	box-shadow: $shadow-1;
+	padding: 2px 20px;
 	transition: background-color 150ms $timing-func-1,
 		transform 150ms $timing-func-1;
 
 	&__label {
-		display: inline-block;
-		font-size: 16px;
-		font-family: $font-khula;
-		font-weight: $font-bold;
 		color: $white;
+		display: inline-block;
+		font-family: $font-khula;
+		font-size: 16px;
+		font-weight: $font-bold;
 		height: calc(#{$font-16} + 6px);
 	}
 

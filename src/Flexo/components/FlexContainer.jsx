@@ -4,7 +4,7 @@ import Axis from './Axis';
 import Consumer from '../../contextSetup';
 import FlexChild from './FlexChild';
 
-const FlexContainer = (props) => {
+const FlexContainer = () => {
 	return (
 		<Consumer>
 			{(context) => {

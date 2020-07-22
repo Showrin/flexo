@@ -37,17 +37,9 @@ const FlexChild = (props) => {
 	);
 };
 
-FlexChild.defaultProps = {
-	isSelected: false,
-	onClick: () => {},
-	childStyles: null,
-};
-
 FlexChild.propTypes = {
-	isSelected: PropTypes.bool,
-	onClick: PropTypes.func,
-	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	childStyles: PropTypes.shape({}),
+	id: PropTypes.number.isRequired,
+	childStyles: PropTypes.shape({}).isRequired,
 };
 
 export default FlexChild;
