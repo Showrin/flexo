@@ -50,7 +50,10 @@ const Sidebar = () => {
 						<div className="sidebar__body">
 							{selectedElement.type === 'container' &&
 								Object.keys(containerStyles).map((style) => (
-									<div className="sidebar__body-col">
+									<div
+										key={style}
+										className="sidebar__body-col"
+									>
 										<code className="sidebar__body-col-property">{`${convertPropertyNameFromJsxToCss(
 											style
 										)} >  ${containerStyles[style]}`}</code>
@@ -60,6 +63,7 @@ const Sidebar = () => {
 													style
 												].map((option) => (
 													<Button
+														key={option}
 														label={option}
 														active={
 															option ===
@@ -86,7 +90,10 @@ const Sidebar = () => {
 								Object.keys(
 									children[selectedElement.id - 1].childStyles
 								).map((style) => (
-									<div className="sidebar__body-col">
+									<div
+										key={style}
+										className="sidebar__body-col"
+									>
 										<code className="sidebar__body-col-property">{`${convertPropertyNameFromJsxToCss(
 											style
 										)} >  ${
@@ -99,6 +106,7 @@ const Sidebar = () => {
 													style
 												].map((option) => (
 													<Button
+														key={option}
 														label={option}
 														active={
 															option ===
