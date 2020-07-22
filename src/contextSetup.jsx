@@ -73,6 +73,58 @@ const ContextProvider = (props) => {
 			selectedElement: { type: elementType, id },
 		}));
 
+	const handleCssPropertyChange = (childId, propertyName, propertyValue) => {
+		console.log('Kenoooooooooooo');
+		const processPropertyValue = (
+			styleObj,
+			propertyName,
+			propertyValue
+		) => {
+			if (
+				propertyValue.split('')[0] === '+' ||
+				propertyValue.split('')[0] === '-'
+			) {
+				return (
+					parseInt(styleObj[propertyName], 10) +
+					parseInt(propertyValue, 10)
+				).toString();
+			}
+			return propertyValue;
+		};
+
+		if (childId) {
+			const childrenAfterStyleUpdate = [...appState.children];
+
+			childrenAfterStyleUpdate[childId - 1].childStyles[
+				propertyName
+			] = processPropertyValue(
+				childrenAfterStyleUpdate[childId - 1].childStyles,
+				propertyName,
+				propertyValue
+			);
+
+			return setAppState((preState) => ({
+				...preState,
+				children: childrenAfterStyleUpdate,
+			}));
+		} else {
+			const containerAfterStyleUpdate = {
+				...appState.containerStyles,
+			};
+
+			containerAfterStyleUpdate[propertyName] = processPropertyValue(
+				containerAfterStyleUpdate,
+				propertyName,
+				propertyValue
+			);
+
+			return setAppState((preState) => ({
+				...preState,
+				containerStyles: containerAfterStyleUpdate,
+			}));
+		}
+	};
+
 	return (
 		<Provider
 			value={{
@@ -83,6 +135,7 @@ const ContextProvider = (props) => {
 				openSidebar,
 				closeSidebar,
 				handleSelectedElement,
+				handleCssPropertyChange,
 			}}
 		>
 			{props.children}

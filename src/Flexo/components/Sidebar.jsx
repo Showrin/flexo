@@ -26,7 +26,7 @@ const Sidebar = () => {
 					containerStyles,
 					children,
 				} = context.appState;
-				const { closeSidebar } = context;
+				const { closeSidebar, handleCssPropertyChange } = context;
 
 				return (
 					<div
@@ -81,6 +81,13 @@ const Sidebar = () => {
 																.split('')
 																.shift() === '-'
 														}
+														onClick={() =>
+															handleCssPropertyChange(
+																selectedElement.id,
+																style,
+																option
+															)
+														}
 													/>
 												))}
 										</div>
@@ -124,6 +131,13 @@ const Sidebar = () => {
 															option
 																.split('')
 																.shift() === '-'
+														}
+														onClick={() =>
+															handleCssPropertyChange(
+																selectedElement.id,
+																style,
+																option
+															)
 														}
 													/>
 												))}
