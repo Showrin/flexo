@@ -73,25 +73,55 @@ const ContextProvider = (props) => {
 			selectedElement: { type: elementType, id },
 		}));
 
-	const handleCssPropertyChange = (childId, propertyName, propertyValue) => {
-		console.log('Kenoooooooooooo');
-		const processPropertyValue = (
-			styleObj,
-			propertyName,
-			propertyValue
-		) => {
-			if (
-				propertyValue.split('')[0] === '+' ||
-				propertyValue.split('')[0] === '-'
-			) {
-				return (
-					parseInt(styleObj[propertyName], 10) +
-					parseInt(propertyValue, 10)
-				).toString();
-			}
-			return propertyValue;
-		};
+	const processPropertyValue = (styleObj, propertyName, propertyValue) => {
+		if (
+			propertyValue.split('')[0] === '+' ||
+			propertyValue.split('')[0] === '-'
+		) {
+			return (
+				parseInt(styleObj[propertyName], 10) +
+				parseInt(propertyValue, 10)
+			).toString();
+		}
+		return propertyValue;
+	};
 
+	const createOrDestroyChildren = (numberOfChildren) => {
+		const defaultChildStyles = {
+			order: '0',
+			flexBasis: 'auto',
+			flexGrow: '0',
+			flexShrink: '1',
+			alignSelf: 'auto',
+		};
+		const remainingChildren = [...appState.children];
+		const childrenNumberDifference =
+			numberOfChildren - remainingChildren.length;
+
+		if (childrenNumberDifference > 0) {
+			for (let i = 0; i < childrenNumberDifference; i++) {
+				remainingChildren.push({
+					id: remainingChildren.length + 1,
+					childStyles: { ...defaultChildStyles },
+				});
+			}
+		} else if (childrenNumberDifference < 0) {
+			const splicingIndex =
+				remainingChildren.length - Math.abs(childrenNumberDifference);
+			console.log(splicingIndex, Math.abs(childrenNumberDifference));
+			remainingChildren.splice(
+				splicingIndex,
+				Math.abs(childrenNumberDifference)
+			);
+		}
+
+		return setAppState((preState) => ({
+			...preState,
+			children: [...remainingChildren],
+		}));
+	};
+
+	const handleCssPropertyChange = (childId, propertyName, propertyValue) => {
 		if (childId) {
 			const childrenAfterStyleUpdate = [...appState.children];
 
@@ -117,6 +147,12 @@ const ContextProvider = (props) => {
 				propertyName,
 				propertyValue
 			);
+
+			if (propertyName === 'children') {
+				createOrDestroyChildren(
+					containerAfterStyleUpdate[propertyName]
+				);
+			}
 
 			return setAppState((preState) => ({
 				...preState,
