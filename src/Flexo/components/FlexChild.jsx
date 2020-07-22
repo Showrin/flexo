@@ -46,8 +46,8 @@ FlexChild.defaultProps = {
 FlexChild.propTypes = {
 	isSelected: PropTypes.bool,
 	onClick: PropTypes.func,
-	id: PropTypes.oneOfType(PropTypes.string, PropTypes.number),
-	childStyles: PropTypes.shape,
+	id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	childStyles: PropTypes.shape({}),
 };
 
 export default FlexChild;

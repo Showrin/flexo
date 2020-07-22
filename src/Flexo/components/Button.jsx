@@ -19,4 +19,20 @@ const Button = (props) => {
 	);
 };
 
+Button.defaultProps = {
+	label: null,
+	active: false,
+	isIncrement: false,
+	isDecrement: false,
+	onClick: () => {},
+};
+
+Button.propTypes = {
+	label: PropTypes.node,
+	active: PropTypes.bool,
+	isIncrement: PropTypes.bool,
+	isDecrement: PropTypes.bool,
+	onClick: PropTypes.func,
+};
+
 export default Button;

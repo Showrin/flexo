@@ -42,7 +42,11 @@ const FlexContainer = (props) => {
 						{children.map((child) => {
 							const { id, childStyles } = child;
 							return (
-								<FlexChild id={id} childStyles={childStyles} />
+								<FlexChild
+									key={id}
+									id={id}
+									childStyles={childStyles}
+								/>
 							);
 						})}
 					</div>

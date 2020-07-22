@@ -37,7 +37,7 @@ Toggle.defaultProps = {
 };
 
 Toggle.propTypes = {
-	label: PropTypes.oneOfType(PropTypes.node, PropTypes.string),
+	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	onClick: PropTypes.func,
 	toggleColor: PropTypes.oneOf(['black', 'danger', 'success']),
 };
