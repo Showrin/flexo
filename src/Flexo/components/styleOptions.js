@@ -1,9 +1,9 @@
 export default {
 	display: ['flex', 'inline-flex'],
 	children: ['+1', '+3', '+5', '+7', '-1', '-3', '-5', '-7'],
-	'flex-direction': ['row', 'row-reverse', 'column', 'column-reverse'],
-	'flex-wrap': ['nowrap', 'wrap', 'wrap-reverse'],
-	'justify-content': [
+	flexDirection: ['row', 'row-reverse', 'column', 'column-reverse'],
+	flexWrap: ['nowrap', 'wrap', 'wrap-reverse'],
+	justifyContent: [
 		'flex-start',
 		'flex-end',
 		'center',
@@ -11,8 +11,8 @@ export default {
 		'space-around',
 		'space-evenly',
 	],
-	'align-items': ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
-	'align-content': [
+	alignItems: ['stretch', 'flex-start', 'flex-end', 'center', 'baseline'],
+	alignContent: [
 		'stretch',
 		'flex-start',
 		'flex-end',
@@ -22,10 +22,10 @@ export default {
 		'space-evenly',
 	],
 	order: ['+1', '+3', '+5', '+7', '-1', '-3', '-5', '-7'],
-	'flex-basis': ['auto', '20%', '40%', '60%', '80%', '100%'],
-	'flex-grow': ['+1', '+3', '+5', '+7'],
-	'flex-shrink': ['+1', '+3', '+5', '+7'],
-	'align-self': [
+	flexBasis: ['auto', '20%', '40%', '60%', '80%', '100%'],
+	flexGrow: ['+1', '+3', '+5', '+7', '-1', '-3', '-5', '-7'],
+	flexShrink: ['+1', '+3', '+5', '+7', '-1', '-3', '-5', '-7'],
+	alignSelf: [
 		'auto',
 		'stretch',
 		'flex-start',
