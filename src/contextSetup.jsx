@@ -82,11 +82,25 @@ const ContextProvider = (props) => {
 			propertyValue.split('')[0] === '+' ||
 			propertyValue.split('')[0] === '-'
 		) {
-			return (
+			const calculatedValue =
 				parseInt(styleObj[propertyName], 10) +
-				parseInt(propertyValue, 10)
-			).toString();
+				parseInt(propertyValue, 10);
+
+			if (
+				(propertyName === 'flexGrow' ||
+					propertyName === 'flexShrink') &&
+				calculatedValue < 0
+			) {
+				return '0';
+			}
+
+			if (propertyName === 'children' && calculatedValue < 1) {
+				return '1';
+			}
+
+			return calculatedValue.toString();
 		}
+
 		return propertyValue;
 	};
 
