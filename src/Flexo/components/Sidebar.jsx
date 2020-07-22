@@ -7,7 +7,7 @@ import { ReactComponent as RightRotate } from '../assets/rightRotate.svg';
 import styledOptions from './styleOptions';
 import Button from './Button';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
 	const convertPropertyNameFromJsxToCss = (propertyName) => {
 		return propertyName
 			.split('')
