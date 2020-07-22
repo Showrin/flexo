@@ -33,12 +33,20 @@ const FlexContainer = (props) => {
 						style={{ padding, ...containerStyles }}
 						onClick={onClickHandler}
 					>
-						{showMainAxis && (
-							<Axis direction="horizontal" type="main" />
-						)}
-						{showCrossAxis && (
-							<Axis direction="vertical" type="cross" />
-						)}
+						{showMainAxis &&
+							(containerStyles.flexDirection === 'row' ||
+							containerStyles.flexDirection === 'row-reverse' ? (
+								<Axis direction="horizontal" type="main" />
+							) : (
+								<Axis direction="vertical" type="main" />
+							))}
+						{showCrossAxis &&
+							(containerStyles.flexDirection === 'row' ||
+							containerStyles.flexDirection === 'row-reverse' ? (
+								<Axis direction="vertical" type="cross" />
+							) : (
+								<Axis direction="horizontal" type="cross" />
+							))}
 						{children.map((child) => {
 							const { id, childStyles } = child;
 							return (
