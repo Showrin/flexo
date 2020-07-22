@@ -7,10 +7,16 @@ const Navbar = () => {
 	return (
 		<Consumer>
 			{(context) => {
-				const { closeSidebar } = context;
+				const { closeSidebar, handleSelectedElement } = context;
 
 				return (
-					<nav className="navbar" onClick={closeSidebar}>
+					<nav
+						className="navbar"
+						onClick={() => {
+							handleSelectedElement('', undefined);
+							return closeSidebar();
+						}}
+					>
 						<div className="navbar__logo">
 							<FlexoLogo />
 						</div>
