@@ -7,6 +7,7 @@ const ContextProvider = (props) => {
 		showCrossAxis: true,
 		addPadding: true,
 		showSidebar: false,
+		sidebarPosition: 'right',
 		selectedElement: {
 			type: '',
 			id: undefined,
@@ -58,14 +59,17 @@ const ContextProvider = (props) => {
 			showSidebar: true,
 		}));
 
+	const changeSidebarPosition = (position) =>
+		setAppState((preState) => ({
+			...preState,
+			sidebarPosition: position,
+		}));
+
 	const closeSidebar = () =>
-		setAppState(
-			(preState) => ({
-				...preState,
-				showSidebar: false,
-			}),
-			handleSelectedElement('', undefined)
-		);
+		setAppState((preState) => ({
+			...preState,
+			showSidebar: false,
+		}));
 
 	const handleSelectedElement = (elementType, id) =>
 		setAppState((preState) => ({
@@ -170,6 +174,7 @@ const ContextProvider = (props) => {
 				handlePaddingToggle,
 				openSidebar,
 				closeSidebar,
+				changeSidebarPosition,
 				handleSelectedElement,
 				handleCssPropertyChange,
 			}}
