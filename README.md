@@ -1,5 +1,5 @@
 # Flexo
 
-## A Exclusive playground to learn CSS Flexbox
+## An Exclusive playground to learn CSS Flexbox
 
-Let's play with Flexbox 🥳🥳🥳
+Let's play with Flexbox 🥳 🥳 🥳
