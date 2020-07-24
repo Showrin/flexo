@@ -34,7 +34,7 @@ const Navbar = () => {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									Visit Creator's Site
+									Creator's Site
 								</a>
 							</div>
 							<div className="navbar__creator-avatar">

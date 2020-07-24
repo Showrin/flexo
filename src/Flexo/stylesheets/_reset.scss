@@ -1,8 +1,8 @@
 *,
 *::after,
 *::before {
-	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
+	box-sizing: border-box;
 }
 
 html {
@@ -193,12 +193,12 @@ img {
 }
 
 a {
-	color: $secondary;
+	color: $danger;
 	text-decoration: none;
-	transition: color 0.2s ease-in-out;
+	transition: color 0.2s $timing-func-1;
 
 	&:hover {
-		color: $danger;
+		color: $secondary;
 	}
 }
 
