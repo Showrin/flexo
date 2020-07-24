@@ -10,4 +10,16 @@
 	&--selected {
 		background-color: $success-extra-light;
 	}
+
+	&--with-padding {
+		padding: $pad-lg $pad-xl;
+	}
+
+	@include is-mobile {
+		height: calc(100vh - 140px);
+
+		&--with-padding {
+			padding: 0;
+		}
+	}
 }
