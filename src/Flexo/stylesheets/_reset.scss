@@ -7,8 +7,14 @@
 html {
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-	font-size: $font-size-root;
+	font-family: $font-khula;
+	font-size: 16px;
+	font-weight: $font-normal;
 	overflow: hidden;
+
+	@include is-mobile {
+		font-size: 12px;
+	}
 }
 
 body {
@@ -103,9 +109,6 @@ video {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	border: 0;
-	font-family: $font-khula;
-	font-size: $font-16;
-	font-weight: $font-normal;
 	margin: 0;
 	padding: 0;
 	vertical-align: baseline;
