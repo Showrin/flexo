@@ -10,7 +10,6 @@ html {
 	font-family: $font-khula;
 	font-size: 16px;
 	font-weight: $font-normal;
-	overflow: hidden;
 
 	@include is-mobile {
 		font-size: 12px;
@@ -22,7 +21,11 @@ body {
 	-webkit-font-smoothing: antialiased;
 	color: $black;
 	line-height: $lh;
+}
+
+html, body {
 	overflow: hidden;
+	position: relative;
 }
 
 html,
