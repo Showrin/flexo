@@ -28,6 +28,12 @@ html,
 body {
 	overflow: hidden;
 	position: relative;
+	height: 100%;
+}
+
+#root,
+.App {
+	height: 100%;
 }
 
 html,
