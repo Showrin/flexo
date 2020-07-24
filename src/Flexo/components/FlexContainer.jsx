@@ -17,7 +17,6 @@ const FlexContainer = () => {
 					children,
 				} = context.appState;
 				const { openSidebar, handleSelectedElement } = context;
-				const padding = addPadding ? '50px 88px' : '0';
 
 				const onClickHandler = () => {
 					handleSelectedElement('container', undefined);
@@ -29,8 +28,9 @@ const FlexContainer = () => {
 						className={classNames('flex-container', {
 							'flex-container--selected':
 								selectedElement.type === 'container',
+							'flex-container--with-padding': addPadding,
 						})}
-						style={{ padding, ...containerStyles }}
+						style={{ ...containerStyles }}
 						onClick={onClickHandler}
 					>
 						{showMainAxis &&

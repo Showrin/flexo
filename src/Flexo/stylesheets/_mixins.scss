@@ -1,0 +1,23 @@
+@mixin is-mobile {
+  @media only screen and (max-width: $mobile) {
+    @content
+  }
+};
+
+@mixin is-tab {
+  @media only screen and (min-width: $mobile) {
+    @content
+  }
+};
+
+@mixin is-tab-landscape {
+  @media only screen and (min-width: $tab) {
+    @content
+  }
+};
+
+@mixin is-desktop {
+  @media only screen and (min-width: $tab-landscape) {
+    @content
+  }
+};

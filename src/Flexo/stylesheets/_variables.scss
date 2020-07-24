@@ -49,6 +49,8 @@ $lh-lg: 2 !default;
 $pad-sm: 18px;
 $pad-lg: 50px;
 $pad-xl: 88px;
+$pad-10: 10px;
+$pad-20: 20px;
 
 // ---------- Borders ----------
 $border-radius: 15px;
@@ -58,3 +60,10 @@ $shadow-1: 0 3px 6px rgba($black, 0.29);
 
 // ---------- Timing Functions ----------
 $timing-func-1: cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+
+// ---------- Breakpoints (Endpoints) ----------
+$mobile: 600px;
+$tab: 900px;
+$tab-landscape: 1200px;
+$desktop: 1800px;

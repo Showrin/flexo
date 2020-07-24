@@ -1,6 +1,7 @@
 .sidebar {
 	background-color: rgba($black, 0.95);
 	color: $white;
+	overflow: hidden;
 	position: absolute;
 	transition: transform 300ms $timing-func-1;
 	z-index: 1000;
@@ -8,7 +9,7 @@
 	&__header {
 		align-items: center;
 		display: flex;
-		height: 20%;
+		height: 135px;
 		padding: 0 $pad-lg;
 		text-transform: capitalize;
 
@@ -46,7 +47,7 @@
 	&__body {
 		display: flex;
 		flex-wrap: wrap;
-		height: 80%;
+		height: calc(100% - 135px);
 		margin-right: -15px;
 		overflow-x: hidden;
 		overflow-y: auto;
@@ -54,7 +55,6 @@
 
 		&-col {
 			margin-bottom: 20px;
-			width: 50%;
 
 			&-property {
 				display: inline-block;
@@ -76,6 +76,12 @@
 		transform: translateY(100%);
 		width: 100%;
 
+		.sidebar__body {
+			&-col {
+				width: 50%;
+			}
+		}
+
 		&.sidebar--open {
 			transform: translateY(0);
 		}
@@ -91,13 +97,7 @@
 		transform: translateX(100%);
 		width: 750px;
 
-		.sidebar__header {
-			height: 14%;
-		}
-
 		.sidebar__body {
-			height: 86%;
-
 			&-col {
 				width: 100%;
 
@@ -109,6 +109,84 @@
 
 		&.sidebar--open {
 			transform: translateX(0);
+		}
+	}
+
+	@include is-mobile {
+		&__header {
+			height: 70px;
+			padding: 0 $pad-20;
+
+			&-title {
+				font-size: $font-40;
+				height: calc(#{$font-40} + 8px);
+			}
+
+			&-icon {
+				font-size: 20px;
+
+				&--close {
+					margin-left: 20px;
+				}
+			}
+		}
+
+		&__body {
+			height: calc(100% - 70px - 10px);
+			margin-top: 10px;
+			padding: 0 $pad-20;
+
+			&-col {
+				margin-bottom: 10px;
+
+				&-property {
+					display: inline-block;
+					margin-bottom: 10px;
+				}
+
+				.button {
+					margin: 0 15px 20px 0;
+
+					&__label {
+						font-size: $font-18;
+						height: calc(#{$font-18} + 6px);
+					}
+				}
+			}
+		}
+
+		&--right {
+			border-top-left-radius: 0;
+		}
+
+		&--bottom {
+			height: 70%;
+
+			.sidebar__body {
+				&-col {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	@include is-tab {
+		&--bottom {
+			.sidebar__body {
+				&-col {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	@include is-desktop {
+		&--bottom {
+			.sidebar__body {
+				&-col {
+					width: 50%;
+				}
+			}
 		}
 	}
 }
