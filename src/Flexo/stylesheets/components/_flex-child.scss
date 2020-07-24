@@ -7,7 +7,7 @@
 	justify-content: center;
 	margin: 1px;
 	min-height: 110px;
-	min-width: 235px;
+	min-width: 110px;
 	position: relative;
 	transition: background-color 150ms $timing-func-1,
 		transform 150ms $timing-func-1;
@@ -36,5 +36,39 @@
 		font-size: $font-50;
 		font-weight: $font-extra-bold;
 		height: calc(#{$font-50} + 12px);
+	}
+
+	@include is-mobile {
+		min-height: 100px;
+		min-width: 100px;
+
+		&__overlay {
+			height: 85%;
+			width: 85%;
+		}
+
+		&__id {
+			height: calc(#{$font-50} + 8px);
+		}
+	}
+
+	@include is-tab {
+		min-height: 150px;
+		min-width: 150px;
+
+		&__overlay {
+			height: 85%;
+			width: 85%;
+		}
+	}
+
+	@include is-desktop {
+		min-height: 110px;
+		min-width: 235px;
+
+		&__overlay {
+			height: 85%;
+			width: 90%;
+		}
 	}
 }
