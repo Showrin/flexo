@@ -126,7 +126,6 @@ const ContextProvider = (props) => {
 		} else if (childrenNumberDifference < 0) {
 			const splicingIndex =
 				remainingChildren.length - Math.abs(childrenNumberDifference);
-			console.log(splicingIndex, Math.abs(childrenNumberDifference));
 			remainingChildren.splice(
 				splicingIndex,
 				Math.abs(childrenNumberDifference)
