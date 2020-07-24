@@ -3,7 +3,7 @@
 	display: flex;
 	height: 100px;
 	justify-content: space-between;
-	padding: $pad-sm $pad-xl;
+	padding: 0 $pad-xl;
 	width: 100%;
 
 	&__logo {
@@ -80,5 +80,13 @@
 				width: 50px;
 			}
 		}
+	}
+
+	@include is-tab {
+		padding: 0 $pad-20;
+	}
+
+	@include is-tab-landscape {
+		padding: 0 $pad-xl;
 	}
 }
