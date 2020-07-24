@@ -2,11 +2,11 @@
 	align-items: center;
 	display: flex;
 	height: 100px;
-	padding: $pad-sm $pad-xl;
+	justify-content: space-between;
+	padding: 0 $pad-xl;
 	width: 100%;
 
 	&__logo {
-		margin-right: auto;
 		width: 160px;
 
 		svg {
@@ -50,5 +50,43 @@
 				width: 62px;
 			}
 		}
+	}
+
+	@include is-mobile {
+		height: 70px;
+		padding: $pad-10;
+
+		&__logo {
+			width: 120px;
+		}
+
+		&__creator {
+			&-info {
+				margin-right: 8px;
+
+				&-text,
+				&-link {
+					font-size: $font-14;
+				}
+	
+				&-name {
+					height: 16px;
+					margin: 0;
+				}
+			}
+
+			&-avatar img {
+				height: 50px;
+				width: 50px;
+			}
+		}
+	}
+
+	@include is-tab {
+		padding: 0 $pad-20;
+	}
+
+	@include is-tab-landscape {
+		padding: 0 $pad-xl;
 	}
 }
