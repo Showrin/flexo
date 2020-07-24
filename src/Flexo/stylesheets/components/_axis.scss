@@ -27,4 +27,11 @@
 	&--cross {
 		background-color: $success;
 	}
+
+	@include is-mobile {
+		&--vertical {
+			height: calc(100% - 140px);
+			top: 70px;
+		}
+	}
 }
