@@ -1,6 +1,6 @@
 .flex-container {
 	background-color: $secondary-light;
-	height: calc(100vh - 200px);
+	height: calc(100% - 200px);
 	overflow: auto;
 	position: relative;
 	transition: padding 300ms $timing-func-1,
@@ -16,7 +16,7 @@
 	}
 
 	@include is-mobile {
-		height: calc(100vh - 140px);
+		height: calc(100% - 140px);
 
 		&--with-padding {
 			padding: 0;
