@@ -1,6 +1,7 @@
-import React, { createContext, useState } from 'react';
-const { Consumer, Provider } = createContext();
+import React, { createContext, useState, useEffect } from 'react';
+import firebase from './dbConfig';
 
+const { Consumer, Provider } = createContext();
 const ContextProvider = (props) => {
 	const [appState, setAppState] = useState({
 		showMainAxis: true,
@@ -10,7 +11,7 @@ const ContextProvider = (props) => {
 		sidebarPosition: 'right',
 		selectedElement: {
 			type: '',
-			id: undefined,
+			id: null,
 		},
 		containerStyles: {
 			display: 'flex',
@@ -76,6 +77,13 @@ const ContextProvider = (props) => {
 			...preState,
 			selectedElement: { type: elementType, id },
 		}));
+
+	const handleShareButtonClick = async () => {
+		const db = firebase.database();
+		const key = await db.ref('sharedViews').push(appState);
+		console.log(key.key);
+		console.log(appState);
+	};
 
 	const processPropertyValue = (styleObj, propertyName, propertyValue) => {
 		if (
@@ -190,6 +198,7 @@ const ContextProvider = (props) => {
 				changeSidebarPosition,
 				handleSelectedElement,
 				handleCssPropertyChange,
+				handleShareButtonClick,
 			}}
 		>
 			{props.children}
