@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Button = (props) => {
-	const { label, active, isIncrement, isDecrement, onClick } = props;
+	const {
+		label,
+		active,
+		isIncrement,
+		isDecrement,
+		onClick,
+		className,
+	} = props;
 
 	return (
 		<button
-			className={classNames('button', {
+			className={classNames('button', className, {
 				'button--active': active,
 				'button--increment': isIncrement,
 				'button--decrement': isDecrement,
@@ -20,6 +27,7 @@ const Button = (props) => {
 };
 
 Button.defaultProps = {
+	className: null,
 	label: null,
 	active: false,
 	isIncrement: false,
@@ -28,6 +36,7 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
+	className: PropTypes.string,
 	label: PropTypes.node,
 	active: PropTypes.bool,
 	isIncrement: PropTypes.bool,
