@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Toggle = (props) => {
-	const { onClick, label, toggleColor } = props;
-	const [toggleState, setToggleState] = useState({ isActive: true });
+	const { onClick, label, toggleColor, isActive } = props;
+	const [toggleState, setToggleState] = useState({
+		isActive,
+	});
+
+	useEffect(() => setToggleState({ isActive }), [isActive]);
 
 	const onClickHandler = () => {
 		return setToggleState(
@@ -34,12 +38,14 @@ Toggle.defaultProps = {
 	label: null,
 	onClick: () => {},
 	toggleColor: 'black',
+	isActive: true,
 };
 
 Toggle.propTypes = {
 	label: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
 	onClick: PropTypes.func,
 	toggleColor: PropTypes.oneOf(['black', 'danger', 'success']),
+	isActive: PropTypes.bool,
 };
 
 export default Toggle;
