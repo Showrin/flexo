@@ -19,7 +19,7 @@ const FlexContainer = () => {
 				const { openSidebar, handleSelectedElement } = context;
 
 				const onClickHandler = () => {
-					handleSelectedElement('container', undefined);
+					handleSelectedElement('container', null);
 					openSidebar();
 				};
 

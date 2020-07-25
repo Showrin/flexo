@@ -18,7 +18,7 @@ const BottomBar = () => {
 					<div
 						className="bottom-bar"
 						onClick={() => {
-							handleSelectedElement('', undefined);
+							handleSelectedElement('', null);
 							return closeSidebar();
 						}}
 					>
