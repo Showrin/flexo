@@ -1,12 +1,17 @@
+import firebase from 'firebase';
+
 const dbConfig = {
-	apiKey: 'AIzaSyCFi-2DbpatLZNatIAzkGSnoLxe5PYsoLE',
-	authDomain: 'flexo-app.firebaseapp.com',
-	databaseURL: 'https://flexo-app.firebaseio.com',
-	projectId: 'flexo-app',
-	storageBucket: 'flexo-app.appspot.com',
-	messagingSenderId: '788115999137',
-	appId: '1:788115999137:web:e68d6fa80031948d21a3e0',
-	measurementId: 'G-WWVS7E90DJ',
+	apiKey: 'AIzaSyCJLzsi8YM5btEU-0UlWLTBo0UmU64P6WI',
+	authDomain: 'app-flexo.firebaseapp.com',
+	databaseURL: 'https://app-flexo.firebaseio.com',
+	projectId: 'app-flexo',
+	storageBucket: 'app-flexo.appspot.com',
+	messagingSenderId: '393815376344',
+	appId: '1:393815376344:web:0ef62eb529db9ea5ceb2ad',
+	measurementId: 'G-HLJLXTQZT2',
 };
 
-export default dbConfig;
+firebase.initializeApp(dbConfig);
+firebase.analytics();
+
+export default firebase;
