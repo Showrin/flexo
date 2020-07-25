@@ -36,6 +36,24 @@ const ContextProvider = (props) => {
 		],
 	});
 
+	useEffect(() => {
+		const fetchView = async () => {
+			const sharedViewID = window.location.pathname.split('/').join('');
+			const db = firebase.database();
+			const sharedView = sharedViewID
+				? await (
+						await db
+							.ref(`sharedViews/${sharedViewID}`)
+							.once('value')
+				  ).val()
+				: null;
+
+			return sharedView && setAppState({ ...sharedView });
+		};
+
+		fetchView();
+	}, []);
+
 	const handleMainAxisToggle = () =>
 		setAppState((preState) => ({
 			...preState,
