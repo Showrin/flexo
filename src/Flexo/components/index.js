@@ -6,3 +6,4 @@ export { default as Axis } from './Axis';
 export { default as FlexChild } from './FlexChild';
 export { default as Sidebar } from './Sidebar';
 export { default as Button } from './Button';
+export { default as LoadingScreen } from './LoadingScreen';
