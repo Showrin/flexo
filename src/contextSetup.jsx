@@ -36,6 +36,8 @@ const ContextProvider = (props) => {
 		],
 	});
 
+	const [isLoading, setIsLoading] = useState(true);
+
 	useEffect(() => {
 		const fetchView = async () => {
 			const sharedViewID = window.location.pathname.split('/').join('');
@@ -48,11 +50,20 @@ const ContextProvider = (props) => {
 				  ).val()
 				: null;
 
-			return sharedView && setAppState({ ...sharedView });
+			return sharedView
+				? setAppState({ ...sharedView }, setIsLoading(false))
+				: setIsLoading(false);
 		};
 
 		fetchView();
 	}, []);
+
+	const handleShareButtonClick = async () => {
+		const db = firebase.database();
+		const key = await db.ref('sharedViews').push(appState);
+		console.log(key.key);
+		console.log(appState);
+	};
 
 	const handleMainAxisToggle = () =>
 		setAppState((preState) => ({
@@ -95,13 +106,6 @@ const ContextProvider = (props) => {
 			...preState,
 			selectedElement: { type: elementType, id },
 		}));
-
-	const handleShareButtonClick = async () => {
-		const db = firebase.database();
-		const key = await db.ref('sharedViews').push(appState);
-		console.log(key.key);
-		console.log(appState);
-	};
 
 	const processPropertyValue = (styleObj, propertyName, propertyValue) => {
 		if (
@@ -208,6 +212,7 @@ const ContextProvider = (props) => {
 		<Provider
 			value={{
 				appState,
+				isLoading,
 				handleMainAxisToggle,
 				handleCrossAxisToggle,
 				handlePaddingToggle,
