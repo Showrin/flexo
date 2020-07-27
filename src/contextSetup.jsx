@@ -40,7 +40,8 @@ const ContextProvider = (props) => {
 
 	useEffect(() => {
 		const fetchView = async () => {
-			const sharedViewID = window.location.pathname.split('/').join('');
+			const urlSegments = window.location.href.split('?shareID=');
+			const sharedViewID = urlSegments[urlSegments.length - 1];
 			const db = firebase.database();
 			const sharedView = sharedViewID
 				? await (
