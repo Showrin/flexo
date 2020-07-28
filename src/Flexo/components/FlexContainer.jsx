@@ -4,6 +4,7 @@ import Axis from './Axis';
 import Consumer from '../../contextSetup';
 import FlexChild from './FlexChild';
 import Button from './Button';
+import Toast from './Toast';
 import { ReactComponent as ShareIcon } from '../assets/share.svg';
 
 const FlexContainer = () => {
@@ -21,12 +22,17 @@ const FlexContainer = () => {
 				const {
 					openSidebar,
 					handleSelectedElement,
-					handleShareButtonClick,
+					pushViewIntoDB,
 				} = context;
 
 				const onClickHandler = () => {
 					handleSelectedElement('container', null);
 					openSidebar();
+				};
+
+				const handleShareButtonClick = (e) => {
+					e.stopPropagation();
+					return pushViewIntoDB();
 				};
 
 				return (
@@ -66,11 +72,9 @@ const FlexContainer = () => {
 						<Button
 							className="flex-container__share-button"
 							label={<ShareIcon />}
-							onClick={(e) => {
-								e.stopPropagation();
-								handleShareButtonClick();
-							}}
+							onClick={handleShareButtonClick}
 						/>
+						<Toast />
 					</div>
 				);
 			}}
