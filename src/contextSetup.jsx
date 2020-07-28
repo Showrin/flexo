@@ -72,7 +72,7 @@ const ContextProvider = (props) => {
 			.push(appState);
 		return setToastState({
 			isShown: true,
-			shareID: window.location.origin + referenceOfpushedView.key,
+			shareID: `${window.location.origin}/?shareID=${referenceOfpushedView.key}`,
 		});
 	};
 
