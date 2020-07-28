@@ -35,13 +35,19 @@ const ContextProvider = (props) => {
 			},
 		],
 	});
-
 	const [isLoading, setIsLoading] = useState(true);
+	const [toastState, setToastState] = useState({
+		isShown: false,
+		shareID: 'No ID to share',
+	});
 
 	useEffect(() => {
 		const fetchView = async () => {
 			const urlSegments = window.location.href.split('?shareID=');
-			const sharedViewID = urlSegments[urlSegments.length - 1];
+			const sharedViewID =
+				urlSegments.length > 1
+					? urlSegments[urlSegments.length - 1]
+					: '';
 			const db = firebase.database();
 			const sharedView = sharedViewID
 				? await (
@@ -59,11 +65,15 @@ const ContextProvider = (props) => {
 		fetchView();
 	}, []);
 
-	const handleShareButtonClick = async () => {
+	const pushViewIntoDB = async () => {
 		const db = firebase.database();
-		const key = await db.ref('sharedViews').push(appState);
-		console.log(key.key);
-		console.log(appState);
+		const referenceOfpushedView = await db
+			.ref('sharedViews')
+			.push(appState);
+		return setToastState({
+			isShown: true,
+			shareID: window.location.origin + referenceOfpushedView.key,
+		});
 	};
 
 	const handleMainAxisToggle = () =>
@@ -214,6 +224,7 @@ const ContextProvider = (props) => {
 			value={{
 				appState,
 				isLoading,
+				toastState,
 				handleMainAxisToggle,
 				handleCrossAxisToggle,
 				handlePaddingToggle,
@@ -222,7 +233,8 @@ const ContextProvider = (props) => {
 				changeSidebarPosition,
 				handleSelectedElement,
 				handleCssPropertyChange,
-				handleShareButtonClick,
+				pushViewIntoDB,
+				setToastState,
 			}}
 		>
 			{props.children}

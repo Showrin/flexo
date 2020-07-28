@@ -7,3 +7,4 @@ export { default as FlexChild } from './FlexChild';
 export { default as Sidebar } from './Sidebar';
 export { default as Button } from './Button';
 export { default as LoadingScreen } from './LoadingScreen';
+export { default as Toast } from './Toast';
