@@ -1,16 +1,39 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import classNames from 'classnames';
 import Consumer from '../../contextSetup';
 import { ReactComponent as CloseIcon } from '../assets/close.svg';
 import { ReactComponent as CheckIcon } from '../assets/check.svg';
 import { ReactComponent as CopyIcon } from '../assets/copy.svg';
 
-const Toast = (props, toastRef) => {
+const Toast = (props) => {
+	const sharingLinkRef = useRef();
+
 	return (
 		<Consumer>
 			{(context) => {
 				const { toastState, setToastState } = context;
 				const closeToast = () => setToastState({ isShown: false });
+
+				const copySharingLink = () => {
+					if(document.body.createTextRange) {
+						// This block for IE support
+						const range = document.body.createTextRange();
+
+						range.moveToElementText(sharingLinkRef.current);
+						range.select();
+						document.execCommand('Copy');
+
+					} else if (window.getSelection) {
+							const selection = window.getSelection();
+							const range = document.createRange();
+
+							range.selectNodeContents(sharingLinkRef.current);
+							selection.removeAllRanges();
+							selection.addRange(range);
+							document.execCommand('Copy');
+
+					}
+				}
 
 				return (
 					<div
@@ -28,10 +51,11 @@ const Toast = (props, toastRef) => {
 								onClick={closeToast}
 							/>
 						</div>
-						<div className="toast__content">
+						<div className="toast__content" onClick={copySharingLink}>
 							<div
 								className="toast__content-link"
 								title="Copy the link"
+								ref={sharingLinkRef}
 							>
 								{toastState.shareID}
 							</div>
