@@ -44,10 +44,11 @@ const ContextProvider = (props) => {
 	useEffect(() => {
 		const fetchView = async () => {
 			const urlSegments = window.location.href.split('?shareID=');
-			const sharedViewID =
+			const urlSegmentsAfterFilteringLinkAssignedByFB =
 				urlSegments.length > 1
-					? urlSegments[urlSegments.length - 1]
+					? urlSegments[1].split('&flexoclid=1')
 					: '';
+			const sharedViewID = urlSegmentsAfterFilteringLinkAssignedByFB[0];
 			const db = firebase.database();
 			const sharedView = sharedViewID
 				? await (
@@ -72,7 +73,7 @@ const ContextProvider = (props) => {
 			.push(appState);
 		return setToastState({
 			isShown: true,
-			shareID: `${window.location.origin}/?shareID=${referenceOfpushedView.key}`,
+			shareID: `${window.location.origin}/?shareID=${referenceOfpushedView.key}&flexoclid=1`,
 		});
 	};
 
