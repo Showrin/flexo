@@ -85,4 +85,10 @@
 	&--active {
 		transform: scale(1);
 	}
+
+	@include is-mobile {
+		bottom: 160px;
+		right: 10px;
+		width: calc(100% - 20px);
+	}
 }
