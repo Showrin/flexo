@@ -51,6 +51,11 @@
 	@include is-mobile {
 		height: calc(100% - 140px);
 
+		&__share-button.button {
+			bottom: 85px;
+			right: 10px;
+		}
+
 		&--with-padding {
 			padding: 0;
 		}
