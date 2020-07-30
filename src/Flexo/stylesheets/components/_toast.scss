@@ -1,13 +1,13 @@
 .toast {
 	background-color: $white;
 	border-radius: 5px;
-	bottom: 100px;
+	bottom: 200px;
 	box-shadow: 0px 3px 10px rgba(#132533, 0.29);
 	cursor: initial;
 	font-size: $font-18;
 	padding: 15px;
-	position: absolute;
-	right: 20px;
+	position: fixed;
+	right: 30px;
 	transform-origin: bottom right;
 	transform: scale(0);
 	transition: transform 0.2s $timing-func-1;
