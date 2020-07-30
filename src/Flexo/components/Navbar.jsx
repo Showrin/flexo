@@ -13,7 +13,7 @@ const Navbar = () => {
 					<nav
 						className="navbar"
 						onClick={() => {
-							handleSelectedElement('', undefined);
+							handleSelectedElement('', null);
 							return closeSidebar();
 						}}
 					>

@@ -7,6 +7,11 @@ const BottomBar = () => {
 		<Consumer>
 			{(context) => {
 				const {
+					showMainAxis,
+					showCrossAxis,
+					addPadding,
+				} = context.appState;
+				const {
 					handleMainAxisToggle,
 					handleCrossAxisToggle,
 					handlePaddingToggle,
@@ -18,7 +23,7 @@ const BottomBar = () => {
 					<div
 						className="bottom-bar"
 						onClick={() => {
-							handleSelectedElement('', undefined);
+							handleSelectedElement('', null);
 							return closeSidebar();
 						}}
 					>
@@ -26,16 +31,19 @@ const BottomBar = () => {
 							label="Main Axis"
 							toggleColor="danger"
 							onClick={handleMainAxisToggle}
+							isActive={showMainAxis}
 						/>
 						<Toggle
 							label="Cross Axis"
 							toggleColor="success"
 							onClick={handleCrossAxisToggle}
+							isActive={showCrossAxis}
 						/>
 						<Toggle
 							label="Padding"
 							toggleColor="black"
 							onClick={handlePaddingToggle}
+							isActive={addPadding}
 						/>
 					</div>
 				);

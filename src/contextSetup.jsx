@@ -1,6 +1,7 @@
-import React, { createContext, useState } from 'react';
-const { Consumer, Provider } = createContext();
+import React, { createContext, useState, useEffect } from 'react';
+import firebase from './dbConfig';
 
+const { Consumer, Provider } = createContext();
 const ContextProvider = (props) => {
 	const [appState, setAppState] = useState({
 		showMainAxis: true,
@@ -10,7 +11,7 @@ const ContextProvider = (props) => {
 		sidebarPosition: 'right',
 		selectedElement: {
 			type: '',
-			id: undefined,
+			id: null,
 		},
 		containerStyles: {
 			display: 'flex',
@@ -34,6 +35,47 @@ const ContextProvider = (props) => {
 			},
 		],
 	});
+	const [isLoading, setIsLoading] = useState(true);
+	const [toastState, setToastState] = useState({
+		isShown: false,
+		shareID: 'No ID to share',
+	});
+
+	useEffect(() => {
+		const fetchView = async () => {
+			const urlSegments = window.location.href.split('?shareID=');
+			const urlSegmentsAfterFilteringLinkAssignedByFB =
+				urlSegments.length > 1
+					? urlSegments[1].split('&flexoclid=1')
+					: '';
+			const sharedViewID = urlSegmentsAfterFilteringLinkAssignedByFB[0];
+			const db = firebase.database();
+			const sharedView = sharedViewID
+				? await (
+						await db
+							.ref(`sharedViews/${sharedViewID}`)
+							.once('value')
+				  ).val()
+				: null;
+
+			return sharedView
+				? setAppState({ ...sharedView }, setIsLoading(false))
+				: setIsLoading(false);
+		};
+
+		fetchView();
+	}, []);
+
+	const pushViewIntoDB = async () => {
+		const db = firebase.database();
+		const referenceOfpushedView = await db
+			.ref('sharedViews')
+			.push(appState);
+		return setToastState({
+			isShown: true,
+			shareID: `${window.location.origin}/?shareID=${referenceOfpushedView.key}&flexoclid=1`,
+		});
+	};
 
 	const handleMainAxisToggle = () =>
 		setAppState((preState) => ({
@@ -182,6 +224,8 @@ const ContextProvider = (props) => {
 		<Provider
 			value={{
 				appState,
+				isLoading,
+				toastState,
 				handleMainAxisToggle,
 				handleCrossAxisToggle,
 				handlePaddingToggle,
@@ -190,6 +234,8 @@ const ContextProvider = (props) => {
 				changeSidebarPosition,
 				handleSelectedElement,
 				handleCssPropertyChange,
+				pushViewIntoDB,
+				setToastState,
 			}}
 		>
 			{props.children}
