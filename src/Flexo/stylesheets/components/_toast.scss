@@ -63,6 +63,7 @@
 			height: calc(#{$font-16} + 6px);
 			overflow: hidden;
 			text-overflow: ellipsis;
+			user-select: none;
 			white-space: nowrap;
 		}
 
@@ -84,5 +85,11 @@
 
 	&--active {
 		transform: scale(1);
+	}
+
+	@include is-mobile {
+		bottom: 160px;
+		right: 10px;
+		width: calc(100% - 20px);
 	}
 }
