@@ -19,7 +19,7 @@ const LoadingScreen = () => {
 							<LoadingArt className="loading-screen__art" />
 							<div className="loading-screen__spin" />
 							<div className="loading-screen__text">
-								Loading the View. Please Wait
+								Loading the View
 							</div>
 						</div>
 					</div>
