@@ -11,14 +11,14 @@
 		align-items: center;
 		background-color: $danger;
 		border-radius: 50%;
-		bottom: 20px;
+		bottom: 120px;
 		box-shadow: 0 6px 10px rgba($danger, 0.75);
 		display: flex;
 		height: 57px;
 		justify-content: center;
 		padding: 0;
-		position: absolute;
-		right: 20px;
+		position: fixed;
+		right: 30px;
 		width: 57px;
 
 		.button__label {
