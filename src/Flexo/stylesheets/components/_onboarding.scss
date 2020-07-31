@@ -112,23 +112,31 @@ $topbar-height: 80px;
 					width: 1em;
 				}
 			}
+
+			&:hover {
+				background-color: $primary;
+			}
 		}
 	}
 
 	&__page {
+		align-items: center;
 		bottom: $bottombar-height;
-		padding: 40px 0 0;
+		display: flex;
+		flex-flow: column;
+		padding: 0 30px;
 		top: $topbar-height;
 		transition: transform 600ms $timing-func-1;
 
 		> * {
-			margin: auto;
-			max-width: 90%;
+			max-width: 100%;
 			width: 665px;
 		}
 
 		&-illustration {
+			align-items: center;
 			display: flex;
+			flex-grow: 1;
 			flex-wrap: wrap;
 			justify-content: center;
 
@@ -139,18 +147,30 @@ $topbar-height: 80px;
 			}
 		}
 
-		&-title {
-			font-size: $font-32;
-			font-weight: $font-bold;
-			margin: 100px auto auto;
-			text-align: center;
-		}
+		&-text {
+			align-content: flex-end;
+			align-items: flex-end;
+			display: flex;
+			flex-grow: 1;
+			flex-wrap: wrap;
+			justify-content: center;
 
-		&-description {
-			font-size: $font-24;
-			font-weight: $font-normal;
-			margin: 15px auto auto;
-			text-align: center;
+			> * {
+				width: 100%;
+			}
+
+			&-title {
+				font-size: $font-32;
+				font-weight: $font-bold;
+				text-align: center;
+			}
+
+			&-description {
+				font-size: $font-24;
+				font-weight: $font-normal;
+				margin: 15px 0 0;
+				text-align: center;
+			}
 		}
 
 		&--active {
@@ -172,5 +192,101 @@ $topbar-height: 80px;
 
 	&--removed {
 		display: none;
+	}
+
+	@include is-mobile {
+		$bottombar-height: 70px;
+		$topbar-height: 60px;
+
+		&__topbar {
+			height: $topbar-height;
+			padding: 0 10px;
+		}
+
+		&__bottombar {
+			height: $bottombar-height;
+			padding: 0 20px;
+
+			&-page-indicator {
+				left: 20px;
+				transform: translate(0, 0);
+
+				&-bar {
+					margin-right: 10px;
+				}
+			}
+
+			&-next-button {
+				height: 50px;
+				width: 50px;
+
+				.button__label {
+					font-size: $font-20;
+					height: calc(#{$font-20});
+					margin-left: 0;
+				}
+			}
+		}
+
+		&__page {
+			bottom: $bottombar-height;
+			padding: 0 20px;
+			top: $topbar-height;
+
+			&-text {
+				flex-grow: 0;
+				padding-bottom: 30px;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-18;
+				}
+			}
+		}
+	}
+
+	@include is-tab {
+		&__page {
+			> * {
+				width: 80%;
+			}
+
+			&-text {
+				flex-grow: 0;
+				padding-bottom: 30px;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-20;
+				}
+			}
+		}
+	}
+
+	@include is-desktop {
+		&__page {
+			> * {
+				width: 665px;
+			}
+
+			&-text {
+				flex-grow: 1;
+				padding-bottom: 0;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-20;
+				}
+			}
+		}
 	}
 }
