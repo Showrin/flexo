@@ -2,6 +2,7 @@ import React from 'react';
 import { ReactComponent as LayoutBuildingIllustration } from './assets/building_layout.svg';
 import { ReactComponent as LinkGeneratingIllustration } from './assets/generating_link.svg';
 import { ReactComponent as LinkSharingIllustration } from './assets/sharing_link.svg';
+import Cookies from 'universal-cookie';
 import {
 	Navbar,
 	FlexContainer,
@@ -11,10 +12,21 @@ import {
 	Onboarding,
 } from './components';
 
+const isItFirstVisit = () => {
+	const cookies = new Cookies();
+
+	if (cookies.get('visitedEarlier')) {
+		return false;
+	}
+
+	cookies.set('visitedEarlier', true, { path: '/' });
+	return true;
+};
+
 const Flexo = () => (
 	<>
 		<Onboarding
-			showOnboarding={true}
+			showOnboarding={isItFirstVisit()}
 			pages={[
 				{
 					illustration: <LayoutBuildingIllustration />,
