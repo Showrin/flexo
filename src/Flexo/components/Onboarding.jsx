@@ -96,9 +96,13 @@ const Onboarding = (props) => {
 					<div className="onboarding__page-illustration">
 						{page.illustration}
 					</div>
-					<div className="onboarding__page-title">{page.title}</div>
-					<div className="onboarding__page-description">
-						{page.description}
+					<div className="onboarding__page-text">
+						<div className="onboarding__page-text-title">
+							{page.title}
+						</div>
+						<div className="onboarding__page-text-description">
+							{page.description}
+						</div>
 					</div>
 				</div>
 			))}
