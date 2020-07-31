@@ -8,3 +8,4 @@ export { default as Sidebar } from './Sidebar';
 export { default as Button } from './Button';
 export { default as LoadingScreen } from './LoadingScreen';
 export { default as Toast } from './Toast';
+export { default as Onboarding } from './Onboarding';

@@ -1,0 +1,292 @@
+$bottombar-height: 130px;
+$topbar-height: 80px;
+
+.onboarding {
+	background-color: $white;
+	display: flex;
+	height: 100%;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	transition: opacity 300ms $timing-func-1;
+	width: 100%;
+	z-index: 200000;
+
+	> * {
+		position: absolute;
+		width: 100%;
+	}
+
+	&__topbar {
+		align-items: center;
+		display: flex;
+		height: $topbar-height;
+		padding: 0 20px;
+		top: 0;
+
+		&-back-icon,
+		&-skip {
+			cursor: pointer;
+			font-size: $font-20;
+			padding: 0 10px;
+			transform: scale(0);
+			transition: transform 300ms $timing-elastic-func;
+			user-select: none;
+
+			&--shown {
+				transform: scale(1);
+			}
+
+			&:active {
+				transform: scale(0.8);
+			}
+		}
+
+		&-back-icon {
+			margin-right: auto;
+
+			svg {
+				display: block;
+				fill: $black;
+				height: 1em;
+				stroke-width: 0;
+				width: 1em;
+			}
+		}
+
+		&-skip {
+			font-weight: $font-bold;
+			margin-left: auto;
+		}
+	}
+
+	&__bottombar {
+		align-items: center;
+		bottom: 0;
+		display: flex;
+		height: $bottombar-height;
+		padding: 0 30px;
+
+		&-page-indicator {
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+
+			&-bar {
+				background-color: $primary-light;
+				border-radius: 15px;
+				display: inline-block;
+				height: 10px;
+				margin-right: 15px;
+				transition: background-color 300ms $timing-func-1;
+				width: 10px;
+
+				&:last-of-type {
+					margin-right: 0;
+				}
+
+				&--active {
+					background-color: $primary;
+				}
+			}
+		}
+
+		&-next-button {
+			background-color: $primary;
+			height: 70px;
+			margin-left: auto;
+			width: 70px;
+
+			.button__label {
+				font-size: $font-24;
+				height: calc(#{$font-24});
+				margin-left: 5px;
+
+				svg {
+					display: block;
+					fill: $white;
+					height: 1em;
+					stroke-width: 0;
+					width: 1em;
+				}
+			}
+
+			&:hover {
+				background-color: $primary;
+			}
+		}
+	}
+
+	&__page {
+		align-items: center;
+		bottom: $bottombar-height;
+		display: flex;
+		flex-flow: column;
+		padding: 0 30px;
+		top: $topbar-height;
+		transition: transform 600ms $timing-func-1;
+
+		> * {
+			max-width: 100%;
+			width: 665px;
+		}
+
+		&-illustration {
+			align-items: center;
+			display: flex;
+			flex-grow: 1;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			svg,
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		&-text {
+			align-content: flex-end;
+			align-items: flex-end;
+			display: flex;
+			flex-grow: 1;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			> * {
+				width: 100%;
+			}
+
+			&-title {
+				font-size: $font-32;
+				font-weight: $font-bold;
+				text-align: center;
+			}
+
+			&-description {
+				font-size: $font-24;
+				font-weight: $font-normal;
+				margin: 15px 0 0;
+				text-align: center;
+			}
+		}
+
+		&--active {
+			transform: translateX(0);
+		}
+
+		&--left {
+			transform: translateX(-100%);
+		}
+
+		&--right {
+			transform: translateX(100%);
+		}
+	}
+
+	&--active {
+		opacity: 1;
+	}
+
+	&--removed {
+		display: none;
+	}
+
+	@include is-mobile {
+		$bottombar-height: 70px;
+		$topbar-height: 60px;
+
+		&__topbar {
+			height: $topbar-height;
+			padding: 0 10px;
+		}
+
+		&__bottombar {
+			height: $bottombar-height;
+			padding: 0 20px;
+
+			&-page-indicator {
+				left: 20px;
+				transform: translate(0, 0);
+
+				&-bar {
+					margin-right: 10px;
+				}
+			}
+
+			&-next-button {
+				height: 50px;
+				width: 50px;
+
+				.button__label {
+					font-size: $font-20;
+					height: calc(#{$font-20});
+					margin-left: 0;
+				}
+			}
+		}
+
+		&__page {
+			bottom: $bottombar-height;
+			padding: 0 20px;
+			top: $topbar-height;
+
+			&-text {
+				flex-grow: 0;
+				padding-bottom: 30px;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-18;
+				}
+			}
+		}
+	}
+
+	@include is-tab {
+		&__page {
+			> * {
+				width: 80%;
+			}
+
+			&-text {
+				flex-grow: 0;
+				padding-bottom: 30px;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-20;
+				}
+			}
+		}
+	}
+
+	@include is-desktop {
+		&__page {
+			> * {
+				width: 665px;
+			}
+
+			&-text {
+				flex-grow: 1;
+				padding-bottom: 0;
+
+				&-title {
+					font-size: $font-24;
+				}
+
+				&-description {
+					font-size: $font-20;
+				}
+			}
+		}
+	}
+}
