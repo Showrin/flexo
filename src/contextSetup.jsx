@@ -35,7 +35,10 @@ const ContextProvider = (props) => {
 			},
 		],
 	});
-	const [isLoading, setIsLoading] = useState(true);
+	const [loadingState, setLoadingState] = useState({
+		isLoading: true,
+		removeLoadingScreenFromDOM: false,
+	});
 	const [toastState, setToastState] = useState({
 		isShown: false,
 		shareID: 'No ID to share',
@@ -59,12 +62,32 @@ const ContextProvider = (props) => {
 				: null;
 
 			return sharedView
-				? setAppState({ ...sharedView }, setIsLoading(false))
-				: setIsLoading(false);
+				? setAppState(
+						{ ...sharedView },
+						setLoadingState((preState) => ({
+							...preState,
+							isLoading: false,
+						}))
+				  )
+				: setLoadingState((preState) => ({
+						...preState,
+						isLoading: false,
+				  }));
 		};
 
 		fetchView();
 	}, []);
+
+	useEffect(() => {
+		if (!loadingState.isLoading) {
+			setTimeout(() => {
+				setLoadingState((preState) => ({
+					...preState,
+					removeLoadingScreenFromDOM: true,
+				}));
+			}, 3500);
+		}
+	}, [loadingState.isLoading]);
 
 	const pushViewIntoDB = async () => {
 		const db = firebase.database();
@@ -224,7 +247,7 @@ const ContextProvider = (props) => {
 		<Provider
 			value={{
 				appState,
-				isLoading,
+				loadingState,
 				toastState,
 				handleMainAxisToggle,
 				handleCrossAxisToggle,
