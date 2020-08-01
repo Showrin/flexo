@@ -35,7 +35,7 @@ const ContextProvider = (props) => {
 			},
 		],
 	});
-	const [isLoading, setIsLoading] = useState(true);
+	const [loadingState, setLoadingState] = useState({ isLoading: true });
 	const [toastState, setToastState] = useState({
 		isShown: false,
 		shareID: 'No ID to share',
@@ -59,8 +59,17 @@ const ContextProvider = (props) => {
 				: null;
 
 			return sharedView
-				? setAppState({ ...sharedView }, setIsLoading(false))
-				: setIsLoading(false);
+				? setAppState(
+						{ ...sharedView },
+						setLoadingState((preState) => ({
+							...preState,
+							isLoading: false,
+						}))
+				  )
+				: setLoadingState((preState) => ({
+						...preState,
+						isLoading: false,
+				  }));
 		};
 
 		fetchView();
@@ -224,7 +233,7 @@ const ContextProvider = (props) => {
 		<Provider
 			value={{
 				appState,
-				isLoading,
+				loadingState,
 				toastState,
 				handleMainAxisToggle,
 				handleCrossAxisToggle,

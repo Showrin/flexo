@@ -7,7 +7,7 @@ const LoadingScreen = () => {
 	return (
 		<Consumer>
 			{(context) => {
-				const isLoading = context.isLoading;
+				const { isLoading } = context.loadingState;
 
 				return (
 					<div
