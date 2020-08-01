@@ -35,7 +35,10 @@ const ContextProvider = (props) => {
 			},
 		],
 	});
-	const [loadingState, setLoadingState] = useState({ isLoading: true });
+	const [loadingState, setLoadingState] = useState({
+		isLoading: true,
+		removeLoadingScreenFromDOM: false,
+	});
 	const [toastState, setToastState] = useState({
 		isShown: false,
 		shareID: 'No ID to share',
@@ -74,6 +77,17 @@ const ContextProvider = (props) => {
 
 		fetchView();
 	}, []);
+
+	useEffect(() => {
+		if (!loadingState.isLoading) {
+			setTimeout(() => {
+				setLoadingState((preState) => ({
+					...preState,
+					removeLoadingScreenFromDOM: true,
+				}));
+			}, 3500);
+		}
+	}, [loadingState.isLoading]);
 
 	const pushViewIntoDB = async () => {
 		const db = firebase.database();

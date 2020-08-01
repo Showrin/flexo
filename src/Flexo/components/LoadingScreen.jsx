@@ -7,12 +7,16 @@ const LoadingScreen = () => {
 	return (
 		<Consumer>
 			{(context) => {
-				const { isLoading } = context.loadingState;
+				const {
+					isLoading,
+					removeLoadingScreenFromDOM,
+				} = context.loadingState;
 
 				return (
 					<div
 						className={classNames('loading-screen', {
 							'loading-screen--hidden': !isLoading,
+							'loading-screen--removed': removeLoadingScreenFromDOM,
 						})}
 					>
 						<div className="loading-screen__art-wrapper">
