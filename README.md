@@ -37,7 +37,7 @@ Currently Flexo app supported the following features:
 
 > **It takes lots of work (typing flex properties one after one) while teaching other.** <br /> <br />
 
-> **Here is mighty FLEXO. A mighty tool to solve this problem. Flexo app can be used for teaching and learning purpose.** <br /> <br />
+> **Here is FLEXO. A mighty tool to solve this problem. Flexo app can be used for teaching and learning purpose.** <br /> <br />
 
 > **With the help of Flexo, one can easily know what properties he/she has to use before diving into the code.**
 
