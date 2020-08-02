@@ -1,8 +1,8 @@
+![Imgur](https://i.imgur.com/E3Qx3cc.png)
+
 # Flexo
 
 ## An Exclusive playground to learn CSS Flexbox
-
-![Imgur](https://i.imgur.com/E3Qx3cc.png)
 
 **FLEXO** is a web app, made to simplify the learning path of CSS Flexbox. One can learn flexbox in an interactive way and also can teach other easily, just using this app. Developers can make a rough sketch here and also can know what properties they have to use before diving into the code. It'll make their coding path smooth. <br /> <br />
 Are you ready??? <br />
@@ -15,7 +15,7 @@ Visit this link ---> [https://www.flexo.icu](https://www.flexo.icu)
 -   **Design Guide Link:** [https://zeroheight.com/2615b42d7](https://zeroheight.com/2615b42d7)
 -   **Test Domain:** [https://test.flexo.icu](https://test.flexo.icu)
 
-### Little demonstrations of Flexo
+### Little demonstration of Flexo
 
 ![Flexo Layou Operating Process](https://i.imgur.com/6k8XWyj.png) <br /> <br />
 ![Flexo Sharing Process](https://i.imgur.com/BPnT2RF.png) <br /> <br />
