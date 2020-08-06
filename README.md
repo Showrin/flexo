@@ -58,7 +58,7 @@ Currently Flexo app supported the following features:
 
 ### Setup Project
 
-It just requires some simple steps to setup this project on your lacal machine. Simply,
+It just requires some simple steps to setup this project on your local machine. Simply,
 
 -   Clone the repo
 -   Run `yarn install`
